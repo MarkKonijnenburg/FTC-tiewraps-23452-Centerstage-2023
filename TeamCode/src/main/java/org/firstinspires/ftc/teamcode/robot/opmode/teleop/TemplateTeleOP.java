@@ -157,5 +157,4 @@ public class TemplateTeleOP extends OpMode
     @Override
     public void stop() {
     }
-
 }
