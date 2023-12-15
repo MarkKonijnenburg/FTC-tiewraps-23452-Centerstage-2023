@@ -10,6 +10,7 @@ import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleTankDrivetrain;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 /**
  * This file is a template for an "OpMode".
@@ -42,6 +43,7 @@ public class TemplateTeleOP extends OpMode
     private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
     private ExampleTankDrivetrain exampleTankDrivetrain;
+    private Gripper gripper;
 
     /**
      * Code to run ONCE when the driver hits INIT
@@ -58,9 +60,10 @@ public class TemplateTeleOP extends OpMode
         exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
         exampleTankDrivetrain = new ExampleTankDrivetrain(hardwareMap);
+        gripper = new Gripper(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Initializing done");
     }
 
     /**
@@ -90,12 +93,12 @@ public class TemplateTeleOP extends OpMode
          */
 
         //If a is pressed on the 1st controller, the example subsystem has to execute the function 'flipDown'
-        if (gamepad1.a){
-            exampleSubsystem.flipDown();
+        if (gamepad2.dpad_right){
+            gripper.OPEN();
         }
         //If a is not pressed, but b is pressed, the example subsystem has to execute the function 'flipUp'
-        else if(gamepad1.b){
-            exampleSubsystem.flipUp();
+        else if(gamepad2.dpad_left){
+            gripper.CLOSED();
         }
 
         //The example subsystem also has a motor which can be set to a certain speed
