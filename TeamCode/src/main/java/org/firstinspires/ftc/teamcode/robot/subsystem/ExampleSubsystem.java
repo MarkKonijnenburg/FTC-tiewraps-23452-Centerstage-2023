@@ -16,7 +16,6 @@ public class ExampleSubsystem {
 
     //Declare motor and servo objects
     private  DcMotor myMotor;
-    private double testForCommitGit;
     private Servo myServo;
 
     //Define positions and other variables of the subsystem
