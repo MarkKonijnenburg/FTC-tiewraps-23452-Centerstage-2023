@@ -99,9 +99,9 @@ public class TemplateTeleOP extends OpMode
         } else if (gamepad2.dpad_right){
             gripper.OPEN();
             
-        }  else if(gamepad2.dpad_left){
+        }  else if(gamepad2.dpad_left) {
             gripper.CLOSED();
-
+        }
 
 
         /*
