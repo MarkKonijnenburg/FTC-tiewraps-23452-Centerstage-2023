@@ -7,27 +7,18 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleTankDrivetrain;
 
-/**
- * This file is a template for an "OpMode".
- * An OpMode is a 'program' that runs in either the autonomous or the teleop period of an FTC match.
- * The names of OpModes appear on the menu of the FTC Driver Station.
- * When a selection is made from the menu, the corresponding OpMode
- * is put on the Robot Controller and executed.
- *
- * This particular OpMode contains a template to structure your code with subsystems.
- *
- */
 
 /*
 * After the @TeleOp, the name of the TeleOP is defined which is displayed on the Driver Station
 * The group can be filled in to group different Opmodes on the phone
 * The // before @Disabled can be removed to hide the Opmode on the Driver Station
  */
-@TeleOp(name="Template TeleOP", group="Iterative Opmode")
+@TeleOp(name="TEST", group="Iterative Opmode")
 //@Disabled
 public class TemplateTeleOP extends OpMode
 {
@@ -42,10 +33,8 @@ public class TemplateTeleOP extends OpMode
     private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
     private ExampleTankDrivetrain exampleTankDrivetrain;
+    private ArmOnder armOnder;
 
-    /**
-     * Code to run ONCE when the driver hits INIT
-     */
     @Override
     public void init() {
         // Telemetry.addData is used to display variables and text on the Driver Station
@@ -58,9 +47,10 @@ public class TemplateTeleOP extends OpMode
         exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
         exampleTankDrivetrain = new ExampleTankDrivetrain(hardwareMap);
+        armOnder = new ArmOnder(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Initializing done");
     }
 
     /**
@@ -84,24 +74,24 @@ public class TemplateTeleOP extends OpMode
      */
     @Override
     public void loop() {
-
         /*
          * Execute the functions of the example subsystem based on controller input
          */
-
-        //If a is pressed on the 1st controller, the example subsystem has to execute the function 'flipDown'
-        if (gamepad1.a){
-            exampleSubsystem.flipDown();
-        }
-        //If a is not pressed, but b is pressed, the example subsystem has to execute the function 'flipUp'
-        else if(gamepad1.b){
-            exampleSubsystem.flipUp();
+        if (gamepad2.y){
+            armOnder.FORWARD();
         }
 
-        //The example subsystem also has a motor which can be set to a certain speed
-        //This speed is determined by the left stick of the 2nd controller
-        //The y position of the stick is the input of the function
-        exampleSubsystem.setMotorSpeed(gamepad2.left_stick_y);
+        else if(gamepad2.a){
+            armOnder.BACKWARDS();
+        }
+
+
+
+
+
+
+
+
 
         /*
          * Several examples to control different drivetrains will be discussed below
@@ -140,12 +130,6 @@ public class TemplateTeleOP extends OpMode
         //The ChassisSpeeds can now be used in the same way as before
         exampleMecanumDrivetrain.mecanumDrive(chassisSpeedsFromFieldRelative);
 
-        //For a tank drivetrain, its a little bit easier
-        //Here, we will use the left stick for forward/backward
-        double forward = -gamepad1.left_stick_y; //Pushing the stick forward gives negative values, so the Y value should be inverted
-        double rotation = gamepad1.right_stick_x;
-
-        exampleTankDrivetrain.tankDrive(forward, rotation);
 
         // Show the elapsed game time and wheel power.
         telemetry.addData("Status", "Run Time: " + runtime.toString());
