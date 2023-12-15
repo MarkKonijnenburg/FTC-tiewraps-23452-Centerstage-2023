@@ -5,8 +5,10 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.checkerframework.checker.units.qual.A;
 import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleTankDrivetrain;
@@ -42,6 +44,7 @@ public class TemplateTeleOP extends OpMode
     private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
     private ExampleTankDrivetrain exampleTankDrivetrain;
+    private ArmBoven armBoven;
 
     /**
      * Code to run ONCE when the driver hits INIT
@@ -58,9 +61,10 @@ public class TemplateTeleOP extends OpMode
         exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
         exampleTankDrivetrain = new ExampleTankDrivetrain(hardwareMap);
+        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
-        telemetry.addData("Status", "Initialized");
+        telemetry.addData("Status", "Initializing done");
     }
 
     /**
@@ -90,12 +94,12 @@ public class TemplateTeleOP extends OpMode
          */
 
         //If a is pressed on the 1st controller, the example subsystem has to execute the function 'flipDown'
-        if (gamepad1.a){
-            exampleSubsystem.flipDown();
+        if (gamepad2.dpad_down){
+            armBoven.FORWARD();
         }
         //If a is not pressed, but b is pressed, the example subsystem has to execute the function 'flipUp'
-        else if(gamepad1.b){
-            exampleSubsystem.flipUp();
+        else if(gamepad2.dpad_up){
+            armBoven.BACKWARDS();
         }
 
         //The example subsystem also has a motor which can be set to a certain speed
