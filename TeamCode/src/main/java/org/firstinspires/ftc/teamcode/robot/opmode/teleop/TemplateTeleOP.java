@@ -13,6 +13,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleTankDrivetrain;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
 /*
@@ -36,8 +37,8 @@ public class TemplateTeleOP extends OpMode
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
     private ExampleTankDrivetrain exampleTankDrivetrain;
     private ArmBoven armBoven;
-
     private ArmOnder armOnder;
+    private Gripper gripper;
 
     @Override
     public void init() {
@@ -51,9 +52,9 @@ public class TemplateTeleOP extends OpMode
         exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
         exampleTankDrivetrain = new ExampleTankDrivetrain(hardwareMap);
+        gripper = new Gripper(hardwareMap);
         armOnder = new ArmOnder(hardwareMap);
         armBoven = new ArmBoven(hardwareMap);
-
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
@@ -94,7 +95,12 @@ public class TemplateTeleOP extends OpMode
             
         } else if(gamepad2.dpad_up){
             armBoven.BACKWARDS();
-        }
+            
+        } else if (gamepad2.dpad_right){
+            gripper.OPEN();
+            
+        }  else if(gamepad2.dpad_left){
+            gripper.CLOSED();
 
 
 
