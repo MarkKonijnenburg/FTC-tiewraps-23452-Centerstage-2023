@@ -105,5 +105,19 @@ public class ExampleMecanumDrivetrain {
         leftFront.setPower(0);
         rightBack.setPower(0);
         leftBack.setPower(0);
+
+
+    }
+    public void setLeftBackSpeed(double speed){
+        leftBack.setPower(speed);
+    }
+    public void setRightBackBackSpeed(double speed){
+        leftBack.setPower(speed);
+    }
+    public void setLeftFrontSpeed(double speed){
+        leftBack.setPower(speed);
+    }
+    public void setRightFrontSpeed(double speed){
+        leftBack.setPower(speed);
     }
 }
