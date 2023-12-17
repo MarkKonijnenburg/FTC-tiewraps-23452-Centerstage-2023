@@ -112,14 +112,14 @@ public class AutonomousRedFront extends LinearOpMode {
         //wait for 200 milliseconds
         sleep(200);
 
-        //set all the left motors of the exampleMecanumDrivetrain subsystem to go forward and the right ones to go backwards
+        //set all the left motors of the exampleMecanumDrivetrain subsystem to go backward and the right ones to go forward
         exampleMecanumDrivetrain.setLeftBackSpeed(-1);
         exampleMecanumDrivetrain.setRightFrontSpeed(1);
         exampleMecanumDrivetrain.setLeftFrontSpeed(-1);
         exampleMecanumDrivetrain.setRightBackBackSpeed(1);
 
         //wait for 180 milliseconds
-        //the robot turned for 90 degrees
+        //the robot turned 90 degrees to the left
         sleep(180);
 
         //all the motors of the exampleMecanumDrivetrain subsystem go backwards
