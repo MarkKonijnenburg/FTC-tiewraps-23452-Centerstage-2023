@@ -5,14 +5,12 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.checkerframework.checker.units.qual.A;
 import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleTankDrivetrain;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
@@ -35,7 +33,6 @@ public class TemplateTeleOP extends OpMode
      */
     private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
-    private ExampleTankDrivetrain exampleTankDrivetrain;
     private ArmBoven armBoven;
     private ArmOnder armOnder;
     private Gripper gripper;
@@ -51,7 +48,6 @@ public class TemplateTeleOP extends OpMode
          */
         exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
-        exampleTankDrivetrain = new ExampleTankDrivetrain(hardwareMap);
         gripper = new Gripper(hardwareMap);
         armOnder = new ArmOnder(hardwareMap);
         armBoven = new ArmBoven(hardwareMap);

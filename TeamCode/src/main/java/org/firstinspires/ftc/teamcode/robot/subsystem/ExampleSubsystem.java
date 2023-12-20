@@ -13,7 +13,6 @@ import com.qualcomm.robotcore.hardware.Servo;
  * In a subsystem file, the different parameters and functions are defined.
  */
 public class ExampleSubsystem {
-
     //Declare motor and servo objects
     private  DcMotor myMotor;
     private Servo myServo;
