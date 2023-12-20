@@ -54,7 +54,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
  * The // before @Disabled can be removed to hide the Opmode on the Driver Station
  */
 
-@Autonomous(name="Template Autonomous1", group="Linear OpMode")
+@Autonomous(name="AutonoomBlueFront", group="Linear OpMode")
 @Disabled
 public class AutonomousBlueFront extends LinearOpMode {
 

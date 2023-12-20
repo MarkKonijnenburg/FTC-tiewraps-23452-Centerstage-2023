@@ -7,11 +7,11 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
-import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
 /*
@@ -31,11 +31,11 @@ public class TemplateTeleOP extends OpMode
     * This means that we will say that certain subsystems exist and give them a name,
     * but not yet create them, this will happen in the init() function.
      */
-    private ExampleSubsystem exampleSubsystem;
+//    private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
-    private ArmBoven armBoven;
-    private ArmOnder armOnder;
-    private Gripper gripper;
+//    private ArmBoven armBoven;
+//    private ArmOnder armOnder;
+//    private Gripper gripper;
 
     @Override
     public void init() {
@@ -46,11 +46,11 @@ public class TemplateTeleOP extends OpMode
          * Create all the subsystems
          * Go to the folder 'subsystems' to view the subsystems, which contain more information
          */
-        exampleSubsystem = new ExampleSubsystem(hardwareMap);
+//        exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
-        gripper = new Gripper(hardwareMap);
-        armOnder = new ArmOnder(hardwareMap);
-        armBoven = new ArmBoven(hardwareMap);
+//        gripper = new Gripper(hardwareMap);
+//        armOnder = new ArmOnder(hardwareMap);
+//        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
@@ -80,24 +80,24 @@ public class TemplateTeleOP extends OpMode
         /*
          * Execute the functions of the example subsystem based on controller input
          */
-        if (gamepad2.y){
-            armOnder.FORWARD();
-            
-        } else if(gamepad2.a){
-            armOnder.BACKWARDS();
-            
-        } else if (gamepad2.dpad_down){
-            armBoven.FORWARD();
-            
-        } else if(gamepad2.dpad_up){
-            armBoven.BACKWARDS();
-            
-        } else if (gamepad2.dpad_right){
-            gripper.OPEN();
-            
-        }  else if(gamepad2.dpad_left) {
-            gripper.CLOSED();
-        }
+//        if (gamepad2.y){
+//            armOnder.FORWARD();
+//
+//        } else if(gamepad2.a){
+//            armOnder.BACKWARDS();
+//
+//        } else if (gamepad2.dpad_down){
+//            armBoven.FORWARD();
+//
+//        } else if(gamepad2.dpad_up){
+//            armBoven.BACKWARDS();
+//
+//        } else if (gamepad2.dpad_right){
+////            gripper.OPEN();
+//
+//        }  else if(gamepad2.dpad_left) {
+////            gripper.CLOSED();
+//        }
 
 
         /*
@@ -126,16 +126,16 @@ public class TemplateTeleOP extends OpMode
         //How exactly to read out the IMU can be found in the UTIL folder
         //How to use the Rotation2d object is also shown there
         //For now we will just take a random value (10 in this case)
-        Rotation2d exampleRobotAngle = Rotation2d.fromDegrees(10);
-
-        double xSpeed = gamepad1.left_stick_x;
-        double ySpeed = -gamepad1.left_stick_y; //Pushing the stick forward gives negative values, so the Y value should be inverted
-        double rotationalSpeed1 = gamepad1.right_stick_x;
-
-        ChassisSpeeds chassisSpeedsFromFieldRelative = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rotationalSpeed1, exampleRobotAngle);
-
-        //The ChassisSpeeds can now be used in the same way as before
-        exampleMecanumDrivetrain.mecanumDrive(chassisSpeedsFromFieldRelative);
+//        Rotation2d exampleRobotAngle = Rotation2d.fromDegrees(10);
+//
+//        double xSpeed = gamepad1.left_stick_x;
+//        double ySpeed = -gamepad1.left_stick_y; //Pushing the stick forward gives negative values, so the Y value should be inverted
+//        double rotationalSpeed1 = gamepad1.right_stick_x;
+//
+//        ChassisSpeeds chassisSpeedsFromFieldRelative = ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, rotationalSpeed1, exampleRobotAngle);
+//
+//        //The ChassisSpeeds can now be used in the same way as before
+//        exampleMecanumDrivetrain.mecanumDrive(chassisSpeedsFromFieldRelative);
 
 
         // Show the elapsed game time and wheel power.
