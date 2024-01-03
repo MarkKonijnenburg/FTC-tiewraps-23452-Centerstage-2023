@@ -55,7 +55,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
  */
 
 @Autonomous(name="AutonoomRedFront", group="Linear OpMode")
-@Disabled
+//@Disabled
 public class AutonomousRedFront extends LinearOpMode {
 
     // Declare timer to keep track of how long the program has been running

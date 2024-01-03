@@ -7,8 +7,8 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
-//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
-//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
@@ -33,8 +33,8 @@ public class TemplateTeleOP extends OpMode
      */
 //    private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
-//    private ArmBoven armBoven;
-//    private ArmOnder armOnder;
+    private ArmBoven armBoven;
+    private ArmOnder armOnder;
 //    private Gripper gripper;
 
     @Override
@@ -49,8 +49,8 @@ public class TemplateTeleOP extends OpMode
 //        exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
 //        gripper = new Gripper(hardwareMap);
-//        armOnder = new ArmOnder(hardwareMap);
-//        armBoven = new ArmBoven(hardwareMap);
+        armOnder = new ArmOnder(hardwareMap);
+        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
@@ -80,24 +80,40 @@ public class TemplateTeleOP extends OpMode
         /*
          * Execute the functions of the example subsystem based on controller input
          */
-//        if (gamepad2.y){
-//            armOnder.FORWARD();
-//
-//        } else if(gamepad2.a){
-//            armOnder.BACKWARDS();
-//
-//        } else if (gamepad2.dpad_down){
-//            armBoven.FORWARD();
-//
-//        } else if(gamepad2.dpad_up){
-//            armBoven.BACKWARDS();
-//
-//        } else if (gamepad2.dpad_right){
-////            gripper.OPEN();
-//
-//        }  else if(gamepad2.dpad_left) {
-////            gripper.CLOSED();
-//        }
+        if (gamepad2.y){
+            armOnder.DRIVING();
+            telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+        } else if(gamepad2.x){
+            armOnder.PLACEMENT();
+            telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+        }  else if(gamepad2.b){
+            armOnder.PICKUP();
+            telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
+        }else {
+            armOnder.DISABLED();
+        }
+
+
+
+
+        if (gamepad2.dpad_down){
+            armBoven.FORWARD();
+
+        } else if(gamepad2.dpad_up){
+            armBoven.BACKWARDS();
+
+        } else {
+            armBoven.DISABLED();
+        }
+
+        if (gamepad2.dpad_right){
+//            gripper.OPEN();
+
+        }  else if(gamepad2.dpad_left) {
+//            gripper.CLOSED();
+        }
+
+
 
 
         /*
