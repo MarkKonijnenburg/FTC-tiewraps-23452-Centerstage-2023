@@ -113,10 +113,10 @@ public class AutonomousBlueFront extends LinearOpMode {
         sleep(2000);
 
         //set all the left motors of the exampleMecanumDrivetrain subsystem to go forward and the right ones to go backward
-        exampleMecanumDrivetrain.setLeftBackSpeed(1);
-        exampleMecanumDrivetrain.setRightFrontSpeed(-1);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(1);
-        exampleMecanumDrivetrain.setRightBackSpeed(-1);
+        exampleMecanumDrivetrain.setLeftBackSpeed(-1);
+        exampleMecanumDrivetrain.setRightFrontSpeed(1);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(-1);
+        exampleMecanumDrivetrain.setRightBackSpeed(1);
 
         //wait for 1800 milliseconds
         //the robot turns 90 degrees to the right
