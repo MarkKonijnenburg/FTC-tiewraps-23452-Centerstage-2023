@@ -85,10 +85,10 @@ public class ExampleMecanumDrivetrain {
          * ATTENTION: this math is by no means correctly, it is just to show
          * how a drive function could be structured
          */
-        double rightFrontPower = 2 * chassisSpeeds.vxMetersPerSecond - 3 * chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
-        double leftFrontPower = 2 * chassisSpeeds.vxMetersPerSecond - 3 * chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
-        double rightBackPower = 2 * chassisSpeeds.vxMetersPerSecond - 3 * chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
-        double leftBackPower = 2 * chassisSpeeds.vxMetersPerSecond - 3 * chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
+        double rightFrontPower = chassisSpeeds.vyMetersPerSecond - chassisSpeeds.vxMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
+        double leftFrontPower = chassisSpeeds.vyMetersPerSecond + chassisSpeeds.vxMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
+        double rightBackPower = chassisSpeeds.vyMetersPerSecond + chassisSpeeds.vxMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
+        double leftBackPower = chassisSpeeds.vyMetersPerSecond - chassisSpeeds.vxMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
 
         rightFront.setPower(rightFrontPower);
         leftFront.setPower(leftFrontPower);

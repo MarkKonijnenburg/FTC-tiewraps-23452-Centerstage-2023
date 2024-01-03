@@ -15,23 +15,38 @@ import com.qualcomm.robotcore.hardware.Servo;
 public class ArmBoven {
 
     //Declare motor and servo objects
-    private  DcMotor motorArmBoven;
+    private DcMotor motorArmBoven;
+    private int degreeDriving;
+    private int degreePickup;
+    private int degreePlacement;
 
-    public ArmBoven(HardwareMap hardwareMap){
+    public ArmBoven(HardwareMap hardwareMap) {
         motorArmBoven = hardwareMap.get(DcMotor.class, "ArmCenter");
         motorArmBoven.setDirection(DcMotorSimple.Direction.REVERSE);
         motorArmBoven.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorArmBoven.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorArmBoven.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        degreeDriving = 100;
+        degreePickup = 50;
+        degreePlacement = 200;
     }
 
 
-
-
-    public void FORWARD(){
+    public void DRIVING(){
+        motorArmBoven.setTargetPosition(degreeDriving);
+        motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorArmBoven.setPower(0.75);
     }
-    public void BACKWARDS(){
-        motorArmBoven.setPower(-0.75);
+    public void PLACEMENT(){
+        motorArmBoven.setTargetPosition(degreePlacement);
+        motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorArmBoven.setPower(0.75);
+    }
+    public void PICKUP(){
+        motorArmBoven.setTargetPosition(degreePickup);
+        motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorArmBoven.setPower(0.75);
     }
 
     public void DISABLED(){
@@ -39,3 +54,4 @@ public class ArmBoven {
     }
 
 }
+

@@ -23,8 +23,6 @@ public class ArmOnder {
     private int degreeDriving;
     private int degreePickup;
     private int degreePlacement;
-    private double formula;
-
 
 
 
@@ -43,12 +41,11 @@ public class ArmOnder {
         motorRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-//        288/360 = aantal ticks per degree
-//        90 * (288/360)
-        formula = 288.0/360.0;
-        degreeDriving = (int)(100 * formula);
-        degreePickup = (int) (50 * formula);
-        degreePlacement = (int)(200 * formula);
+
+
+        degreeDriving = 100;
+        degreePickup = 50;
+        degreePlacement = 200;
 
     }
     public void DISABLED(){;
@@ -61,8 +58,8 @@ public class ArmOnder {
         motorLeft.setTargetPosition(degreeDriving);
         motorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorLeft.setPower(0.75);
-        motorRight.setPower(0.75);
+        motorLeft.setPower(1);
+        motorRight.setPower(1);
 
     }
 
@@ -71,16 +68,16 @@ public class ArmOnder {
         motorLeft.setTargetPosition(degreePickup);
         motorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorLeft.setPower(-0.75);
-        motorRight.setPower(-0.75);
+        motorLeft.setPower(-1);
+        motorRight.setPower(-1);
     }
     public void PLACEMENT(){
         motorRight.setTargetPosition(degreePlacement);
         motorLeft.setTargetPosition(degreePlacement);
         motorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorLeft.setPower(-0.75);
-        motorRight.setPower(-0.75);
+        motorLeft.setPower(-1);
+        motorRight.setPower(-1);
     }
     public int getDegreeDriving() {
         return degreeDriving;

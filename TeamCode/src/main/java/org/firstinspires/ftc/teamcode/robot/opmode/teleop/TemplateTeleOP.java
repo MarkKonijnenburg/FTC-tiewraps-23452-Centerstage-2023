@@ -89,21 +89,18 @@ public class TemplateTeleOP extends OpMode
         }  else if(gamepad2.b){
             armOnder.PICKUP();
             telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
-        }else {
-            armOnder.DISABLED();
         }
 
 
 
+        if (gamepad2.dpad_up){
+            armBoven.DRIVING();
 
-        if (gamepad2.dpad_down){
-            armBoven.FORWARD();
+        } else if(gamepad2.dpad_right){
+            armBoven.PICKUP();
 
-        } else if(gamepad2.dpad_up){
-            armBoven.BACKWARDS();
-
-        } else {
-            armBoven.DISABLED();
+        }else if (gamepad2.dpad_left) {
+            armBoven.PLACEMENT();
         }
 
         if (gamepad2.dpad_right){
