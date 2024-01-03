@@ -51,8 +51,8 @@ public class ExampleMecanumDrivetrain {
          * Usually the left side of the drivetrain needs to be reversed,
          * but this should always be checked to be sure
          */
-        leftFront.setDirection(DcMotorSimple.Direction.REVERSE);
-        leftBack.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
 
         /*
          * Tell the motors to use the integrated encoders
@@ -105,8 +105,6 @@ public class ExampleMecanumDrivetrain {
         leftFront.setPower(0);
         rightBack.setPower(0);
         leftBack.setPower(0);
-
-
     }
     public void setLeftBackSpeed(double speed){
         leftBack.setPower(speed);
