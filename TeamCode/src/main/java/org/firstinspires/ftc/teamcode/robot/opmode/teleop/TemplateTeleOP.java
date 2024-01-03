@@ -122,13 +122,16 @@ public class TemplateTeleOP extends OpMode
 
         //Control the drivetrain using the two joysticks of the 1st controller
         //The ChassisSpeeds object will be used to store the desired speeds of the robot
-        double forwardSpeed = gamepad1.left_stick_x;
-        double sidewaysSpeed = -gamepad1.left_stick_y;  //Pushing the stick forward gives negative values, so the Y value should be inverted
-        double rotationalSpeed = gamepad1.right_stick_x;
-        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(forwardSpeed, sidewaysSpeed, rotationalSpeed);
+//        double forwardSpeed = -gamepad1.left_stick_y;
+//        double sidewaysSpeed = gamepad1.left_stick_x;  //Pushing the stick forward gives negative values, so the Y value should be inverted
+//        double rotationalSpeed = gamepad1.right_stick_x;
+//        ChassisSpeeds chassisSpeeds = new ChassisSpeeds(forwardSpeed, sidewaysSpeed, rotationalSpeed);
 
         //The chassisSpeeds can be used as input for the mecanumDrive function to control the drivetrain
-        exampleMecanumDrivetrain.mecanumDrive(chassisSpeeds);
+        double y = -gamepad1.left_stick_y; // Remember, Y stick is reversed!
+        double x = gamepad1.left_stick_x;
+        double rx = gamepad1.right_stick_x;
+        exampleMecanumDrivetrain.mecanumDrive(x,y,rx);
 
         //In the code above, the robot will drive forward if the stick is pushed forward,
         //but the robot can also be controlled relative to the field.

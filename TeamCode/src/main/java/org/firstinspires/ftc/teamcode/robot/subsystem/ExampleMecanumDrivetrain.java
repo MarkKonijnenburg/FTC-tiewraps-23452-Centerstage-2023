@@ -77,24 +77,32 @@ public class ExampleMecanumDrivetrain {
      * The x, y and rotation component are all stored in the ChassisSpeed object
      * as vxMeterPerSecond, vyMeterPerSecond and omegaRadiansPerSecond respectively.
      *
-     * @param chassisSpeeds Object that stores the desired x, y and rotational speeds
-     */
-    public void mecanumDrive(ChassisSpeeds chassisSpeeds){
+//     * @param chassisSpeeds Object that stores the desired x, y and rotational speeds
+//     */
+//    public void mecanumDrive(ChassisSpeeds chassisSpeeds){
+//
+//        /* Here follows some math to convert the inputs to the desired motor speeds
+//         * ATTENTION: this math is by no means correctly, it is just to show
+//         * how a drive function could be structured
+//         */
+//        double rightFrontPower = chassisSpeeds.vxMetersPerSecond - chassisSpeeds.vyMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
+//        double leftFrontPower = chassisSpeeds.vxMetersPerSecond + chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
+//        double rightBackPower = chassisSpeeds.vxMetersPerSecond + chassisSpeeds.vyMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
+//        double leftBackPower = chassisSpeeds.vxMetersPerSecond - chassisSpeeds.vyMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
+//
+//        rightFront.setPower(rightFrontPower);
+//        leftFront.setPower(leftFrontPower);
+//        rightBack.setPower(rightBackPower);
+//        leftBack.setPower(leftBackPower);
 
-        /* Here follows some math to convert the inputs to the desired motor speeds
-         * ATTENTION: this math is by no means correctly, it is just to show
-         * how a drive function could be structured
-         */
-        double rightFrontPower = chassisSpeeds.vyMetersPerSecond - chassisSpeeds.vxMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
-        double leftFrontPower = chassisSpeeds.vyMetersPerSecond + chassisSpeeds.vxMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
-        double rightBackPower = chassisSpeeds.vyMetersPerSecond + chassisSpeeds.vxMetersPerSecond - chassisSpeeds.omegaRadiansPerSecond;
-        double leftBackPower = chassisSpeeds.vyMetersPerSecond - chassisSpeeds.vxMetersPerSecond + chassisSpeeds.omegaRadiansPerSecond;
+//    }
 
-        rightFront.setPower(rightFrontPower);
-        leftFront.setPower(leftFrontPower);
-        rightBack.setPower(rightBackPower);
-        leftBack.setPower(leftBackPower);
+    public void mecanumDrive(double x, double y, double rx){
 
+        leftFront.setPower(y + x + rx);
+        leftBack.setPower(y - x + rx);
+        rightFront.setPower(y - x - rx);
+        rightBack.setPower(y + x - rx);
     }
 
     /**
