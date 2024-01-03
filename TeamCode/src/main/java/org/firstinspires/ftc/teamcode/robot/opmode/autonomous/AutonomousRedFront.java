@@ -101,7 +101,7 @@ public class AutonomousRedFront extends LinearOpMode {
         exampleMecanumDrivetrain.setLeftBackSpeed(0.5);
         exampleMecanumDrivetrain.setRightFrontSpeed(0.5);
         exampleMecanumDrivetrain.setLeftFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setRightBackBackSpeed(0.5);
+        exampleMecanumDrivetrain.setRightBackSpeed(0.5);
 
         //wait for 2600 milliseconds
         sleep(2600);
@@ -116,7 +116,7 @@ public class AutonomousRedFront extends LinearOpMode {
         exampleMecanumDrivetrain.setLeftBackSpeed(-1);
         exampleMecanumDrivetrain.setRightFrontSpeed(1);
         exampleMecanumDrivetrain.setLeftFrontSpeed(-1);
-        exampleMecanumDrivetrain.setRightBackBackSpeed(1);
+        exampleMecanumDrivetrain.setRightBackSpeed(1);
 
         //wait for 1800 milliseconds
         //the robot turned 90 degrees to the left
@@ -126,7 +126,7 @@ public class AutonomousRedFront extends LinearOpMode {
         exampleMecanumDrivetrain.setLeftBackSpeed(-0.5);
         exampleMecanumDrivetrain.setRightFrontSpeed(-0.5);
         exampleMecanumDrivetrain.setLeftFrontSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightBackBackSpeed(-0.5);
+        exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
 
         //wait for 8500 milliseconds
         sleep(8500);
