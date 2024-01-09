@@ -11,7 +11,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
-//import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
 /*
@@ -19,7 +19,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 * The group can be filled in to group different Opmodes on the phone
 * The // before @Disabled can be removed to hide the Opmode on the Driver Station
  */
-@TeleOp(name="TEST", group="Iterative Opmode")
+@TeleOp(name="DEZE_CODE_IS_DE_GOEDE!", group="Iterative Opmode")
 //@Disabled
 public class TemplateTeleOP extends OpMode
 {
@@ -35,7 +35,7 @@ public class TemplateTeleOP extends OpMode
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
     private ArmBoven armBoven;
     private ArmOnder armOnder;
-//    private Gripper gripper;
+    private Gripper gripper;
 
     @Override
     public void init() {
@@ -48,7 +48,7 @@ public class TemplateTeleOP extends OpMode
          */
 //        exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
-//        gripper = new Gripper(hardwareMap);
+        gripper = new Gripper(hardwareMap);
         armOnder = new ArmOnder(hardwareMap);
         armBoven = new ArmBoven(hardwareMap);
 
@@ -70,6 +70,7 @@ public class TemplateTeleOP extends OpMode
     public void start() {
         // Restart the timer
         runtime.reset();
+
     }
 
     /**
@@ -96,18 +97,21 @@ public class TemplateTeleOP extends OpMode
         if (gamepad2.dpad_up){
             armBoven.DRIVING();
 
-        } else if(gamepad2.dpad_right){
+        } else if(gamepad2.dpad_down){
             armBoven.PICKUP();
 
         }else if (gamepad2.dpad_left) {
-            armBoven.PLACEMENT();
+            armBoven.PLACEBACK();
+        } else if (gamepad2.dpad_right) {
+             armBoven.PLACEFRONT();
         }
 
-        if (gamepad2.dpad_right){
-//            gripper.OPEN();
+        if (gamepad2.right_bumper){
+            gripper.CLOSED();
 
-        }  else if(gamepad2.dpad_left) {
-//            gripper.CLOSED();
+        }  else if(gamepad2.left_bumper) {
+            gripper.OPEN();
+            exampleMecanumDrivetrain.setRightBackSpeed(0.2);
         }
 
 

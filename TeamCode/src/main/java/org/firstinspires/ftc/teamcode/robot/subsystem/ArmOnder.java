@@ -43,9 +43,9 @@ public class ArmOnder {
 
 
 
-        degreeDriving = 100;
-        degreePickup = 50;
-        degreePlacement = 200;
+        degreeDriving = 20;
+        degreePickup = 10;
+        degreePlacement = 400;
 
     }
     public void DISABLED(){;
@@ -68,8 +68,8 @@ public class ArmOnder {
         motorLeft.setTargetPosition(degreePickup);
         motorRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         motorLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorLeft.setPower(-1);
-        motorRight.setPower(-1);
+        motorLeft.setPower(-0.1);
+        motorRight.setPower(-0.1);
     }
     public void PLACEMENT(){
         motorRight.setTargetPosition(degreePlacement);

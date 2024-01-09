@@ -18,17 +18,21 @@ public class Gripper {
     private Servo servoIntake;
 
     //Define positions and other variables of the subsystem
-    private double open = 1;
-    private double close = 0.87;
+    private double open = 0.5;
+    private double close = 0;
+
 
 
     public Gripper(HardwareMap hardwareMap) {
         servoIntake = hardwareMap.get(Servo.class, "Intake");
 
+        servoIntake.resetDeviceConfigurationForOpMode();
+
     }
 
 
     public void OPEN() {
+
         servoIntake.setPosition(open);
     }
 

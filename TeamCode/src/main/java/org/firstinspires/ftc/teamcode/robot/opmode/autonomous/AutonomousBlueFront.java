@@ -98,13 +98,13 @@ public class AutonomousBlueFront extends LinearOpMode {
          */
 
         //Set all the motors of the exampleMecanumDrivetrain subsystem to half speed
-        exampleMecanumDrivetrain.setLeftBackSpeed(0.5);
-        exampleMecanumDrivetrain.setRightFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setRightBackSpeed(0.5);
+        exampleMecanumDrivetrain.setLeftBackSpeed(0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(0.25);
 
         //wait for 2600 milliseconds
-        sleep(2600);
+        sleep(1500);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
@@ -120,7 +120,7 @@ public class AutonomousBlueFront extends LinearOpMode {
 
         //wait for 1800 milliseconds
         //the robot turns 90 degrees to the right
-        sleep(1800);
+        sleep(100);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
@@ -135,7 +135,7 @@ public class AutonomousBlueFront extends LinearOpMode {
         exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
 
         //wait for 8500 milliseconds
-        sleep(8500);
+        sleep(7000);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();

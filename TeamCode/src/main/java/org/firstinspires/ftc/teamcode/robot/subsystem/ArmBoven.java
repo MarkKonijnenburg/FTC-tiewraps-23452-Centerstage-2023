@@ -18,7 +18,8 @@ public class ArmBoven {
     private DcMotor motorArmBoven;
     private int degreeDriving;
     private int degreePickup;
-    private int degreePlacement;
+    private int degreePlaceBack;
+    private int degreePlaceFront;
 
     public ArmBoven(HardwareMap hardwareMap) {
         motorArmBoven = hardwareMap.get(DcMotor.class, "ArmCenter");
@@ -27,26 +28,32 @@ public class ArmBoven {
         motorArmBoven.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        degreeDriving = 100;
-        degreePickup = 50;
-        degreePlacement = 200;
+        degreeDriving = 0;
+        degreePickup = 0;
+        degreePlaceBack = -400;
+        degreePlaceFront = -160;
     }
 
 
     public void DRIVING(){
         motorArmBoven.setTargetPosition(degreeDriving);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.75);
+        motorArmBoven.setPower(0.3);
     }
-    public void PLACEMENT(){
-        motorArmBoven.setTargetPosition(degreePlacement);
+    public void PLACEBACK(){
+        motorArmBoven.setTargetPosition(degreePlaceBack);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.75);
+        motorArmBoven.setPower(-0.3);
     }
     public void PICKUP(){
         motorArmBoven.setTargetPosition(degreePickup);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.75);
+        motorArmBoven.setPower(0.3);
+    }
+    public void PLACEFRONT(){
+        motorArmBoven.setTargetPosition(degreePlaceFront);
+        motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        motorArmBoven.setPower(0.3);
     }
 
     public void DISABLED(){
