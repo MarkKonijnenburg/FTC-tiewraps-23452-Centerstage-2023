@@ -105,35 +105,18 @@ public class TemplateTeleOP extends OpMode
         }
 
 
-
-
-//        if (gamepad2.dpad_up){
-//            armBoven.DRIVING();
-
-//        } else if(gamepad2.dpad_down){
-//            armBoven.PICKUP();
-
-//        }else if (gamepad2.dpad_left) {
-//            armBoven.PLACEBACK();
-//        } else if (gamepad2.dpad_right) {
-//             armBoven.PLACEFRONT();
-//        }
-
         if (gamepad2.right_bumper){
             gripper.CLOSED();
-
         }  else if(gamepad2.left_bumper) {
             gripper.OPEN();
-
         }
 
         if (gamepad2.right_trigger > 0.1){
             climberMotor.climbing();
-        }
-
-        else if (gamepad2.left_trigger > 0.1) {
+        } else if (gamepad2.left_trigger > 0.1) {
             climberMotor.down();
         }
+
         else {
             climberMotor.disabled();
         }

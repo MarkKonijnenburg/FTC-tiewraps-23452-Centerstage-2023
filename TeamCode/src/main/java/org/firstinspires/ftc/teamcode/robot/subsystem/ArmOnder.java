@@ -43,8 +43,8 @@ public class ArmOnder {
 
 
 
-        degreeDriving = 20;
-        degreePickup = 10;
+        degreeDriving = 30;
+        degreePickup = 0;
         degreePlacement = 400;
 
     }

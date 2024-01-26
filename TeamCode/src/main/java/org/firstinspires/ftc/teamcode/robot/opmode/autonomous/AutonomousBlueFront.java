@@ -34,7 +34,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
 /**
@@ -67,6 +70,9 @@ public class AutonomousBlueFront extends LinearOpMode {
      * but not yet create them, this will happen in the init() function.
      */
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
+    private ArmBoven armBoven;
+    private ArmOnder armOnder;
+    private Gripper gripper;
 
     @Override
     public void runOpMode() {
@@ -82,6 +88,9 @@ public class AutonomousBlueFront extends LinearOpMode {
          * Go to the folder 'subsystems' to view the subsystems, which contain more information
          */
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
+        gripper = new Gripper(hardwareMap);
+        armOnder = new ArmOnder(hardwareMap);
+        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initialized");
@@ -139,5 +148,33 @@ public class AutonomousBlueFront extends LinearOpMode {
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
+
+        //wait for 1000 milliseconds
+        sleep(1000);
+
+        //move arm to position for scoring
+        armOnder.PLACEMENT();
+        armBoven.PLACEBACK();
+        telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+
+        //drop the pixel
+        gripper.OPEN();
+
+        //arm goes to driving position
+        armOnder.DRIVING();
+        armBoven.DRIVING();
+        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+
+        //move to a side?
+        exampleMecanumDrivetrain.setLeftBackSpeed(-0.5);
+        exampleMecanumDrivetrain.setRightFrontSpeed(0.5);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(0.5);
+        exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
+
+        //wait for 2000 milliseconds
+        sleep(2000);
+
+        exampleMecanumDrivetrain.stop();
+
     }
 }

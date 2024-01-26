@@ -13,10 +13,10 @@ public class Climber {
     }
 
     public void climbing(){
-        climberMotor.setPower(0.5);
+        climberMotor.setPower(0.8);
     }
     public void down(){
-        climberMotor.setPower(-0.5);
+        climberMotor.setPower(-0.8);
     }
 
     public void disabled(){
