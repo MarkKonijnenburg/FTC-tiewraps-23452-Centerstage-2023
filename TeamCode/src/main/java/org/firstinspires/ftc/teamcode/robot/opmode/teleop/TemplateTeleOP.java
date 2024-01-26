@@ -9,9 +9,11 @@ import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
 import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Climber;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
 
 
 /*
@@ -36,6 +38,8 @@ public class TemplateTeleOP extends OpMode
     private ArmBoven armBoven;
     private ArmOnder armOnder;
     private Gripper gripper;
+    private Climber climberMotor;
+//    private PlaneShooter planeShooter;
 
     @Override
     public void init() {
@@ -51,6 +55,8 @@ public class TemplateTeleOP extends OpMode
         gripper = new Gripper(hardwareMap);
         armOnder = new ArmOnder(hardwareMap);
         armBoven = new ArmBoven(hardwareMap);
+        climberMotor = new Climber(hardwareMap);
+//        planeShooter = new PlaneShooter(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
@@ -83,37 +89,58 @@ public class TemplateTeleOP extends OpMode
          */
         if (gamepad2.y){
             armOnder.DRIVING();
+            armBoven.DRIVING();
             telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
         } else if(gamepad2.x){
             armOnder.PLACEMENT();
+            armBoven.PLACEBACK();
             telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
         }  else if(gamepad2.b){
             armOnder.PICKUP();
-            telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
-        }
-
-
-
-        if (gamepad2.dpad_up){
-            armBoven.DRIVING();
-
-        } else if(gamepad2.dpad_down){
             armBoven.PICKUP();
-
-        }else if (gamepad2.dpad_left) {
-            armBoven.PLACEBACK();
-        } else if (gamepad2.dpad_right) {
-             armBoven.PLACEFRONT();
+            telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
+        }  else if (gamepad2.a){
+           armOnder.PICKUP();
+           armBoven.PLACEFRONT();
         }
+
+
+
+
+//        if (gamepad2.dpad_up){
+//            armBoven.DRIVING();
+
+//        } else if(gamepad2.dpad_down){
+//            armBoven.PICKUP();
+
+//        }else if (gamepad2.dpad_left) {
+//            armBoven.PLACEBACK();
+//        } else if (gamepad2.dpad_right) {
+//             armBoven.PLACEFRONT();
+//        }
 
         if (gamepad2.right_bumper){
             gripper.CLOSED();
 
         }  else if(gamepad2.left_bumper) {
             gripper.OPEN();
-            exampleMecanumDrivetrain.setRightBackSpeed(0.2);
+
         }
 
+        if (gamepad2.right_trigger > 0.1){
+            climberMotor.climbing();
+        }
+
+        else if (gamepad2.left_trigger > 0.1) {
+            climberMotor.down();
+        }
+        else {
+            climberMotor.disabled();
+        }
+//
+//        if (gamepad2.dpad_up) {
+//            planeShooter.Shoot();
+//        }
 
 
 

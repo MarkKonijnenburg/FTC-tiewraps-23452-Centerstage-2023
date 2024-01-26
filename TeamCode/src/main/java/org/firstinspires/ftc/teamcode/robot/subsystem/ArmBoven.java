@@ -38,22 +38,22 @@ public class ArmBoven {
     public void DRIVING(){
         motorArmBoven.setTargetPosition(degreeDriving);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.3);
+        motorArmBoven.setPower(0.15);
     }
     public void PLACEBACK(){
         motorArmBoven.setTargetPosition(degreePlaceBack);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(-0.3);
+        motorArmBoven.setPower(-0.15);
     }
     public void PICKUP(){
         motorArmBoven.setTargetPosition(degreePickup);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.3);
+        motorArmBoven.setPower(0.15);
     }
     public void PLACEFRONT(){
         motorArmBoven.setTargetPosition(degreePlaceFront);
         motorArmBoven.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        motorArmBoven.setPower(0.3);
+        motorArmBoven.setPower(0.15);
     }
 
     public void DISABLED(){

@@ -18,8 +18,8 @@ public class Gripper {
     private Servo servoIntake;
 
     //Define positions and other variables of the subsystem
-    private double open = 0.5;
-    private double close = 0;
+    private double open = 0.66;
+    private double close = 0.8;
 
 
 
@@ -42,4 +42,5 @@ public class Gripper {
     public void CLOSED() {
         servoIntake.setPosition(close);
     }
+
 }
