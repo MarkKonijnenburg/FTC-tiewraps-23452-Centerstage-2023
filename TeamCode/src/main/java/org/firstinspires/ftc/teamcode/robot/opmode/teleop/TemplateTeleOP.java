@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.Climber;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
-//import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
+import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
 
 
 /*
@@ -39,7 +39,7 @@ public class TemplateTeleOP extends OpMode
     private ArmOnder armOnder;
     private Gripper gripper;
     private Climber climberMotor;
-//    private PlaneShooter planeShooter;
+    private PlaneShooter planeShooter;
 
     @Override
     public void init() {
@@ -56,7 +56,7 @@ public class TemplateTeleOP extends OpMode
         armOnder = new ArmOnder(hardwareMap);
         armBoven = new ArmBoven(hardwareMap);
         climberMotor = new Climber(hardwareMap);
-//        planeShooter = new PlaneShooter(hardwareMap);
+        planeShooter = new PlaneShooter(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
@@ -120,10 +120,10 @@ public class TemplateTeleOP extends OpMode
         else {
             climberMotor.disabled();
         }
-//
-//        if (gamepad2.dpad_up) {
-//            planeShooter.Shoot();
-//        }
+
+        if (gamepad2.dpad_up) {
+            planeShooter.Shoot();
+        }
 
 
 
