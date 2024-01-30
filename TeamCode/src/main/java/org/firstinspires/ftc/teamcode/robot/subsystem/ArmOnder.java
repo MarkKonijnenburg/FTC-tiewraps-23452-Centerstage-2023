@@ -52,6 +52,14 @@ public class ArmOnder {
         motorLeft.setPower(0);
         motorRight.setPower(0);
     }
+    public  void up(){
+        motorRight.setPower(0.5);
+        motorLeft.setPower(0.5);
+    }
+    public  void down(){
+        motorRight.setPower(-0.5);
+        motorLeft.setPower(-0.5);
+    }
 
     public void DRIVING(){
         motorRight.setTargetPosition(degreeDriving);

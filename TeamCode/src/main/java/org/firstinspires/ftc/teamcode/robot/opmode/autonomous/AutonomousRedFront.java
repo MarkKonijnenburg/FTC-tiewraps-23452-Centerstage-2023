@@ -34,7 +34,10 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
 
 
 /**
@@ -67,6 +70,9 @@ public class AutonomousRedFront extends LinearOpMode {
      * but not yet create them, this will happen in the init() function.
      */
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
+    private ArmBoven armBoven;
+    private ArmOnder armOnder;
+    private Gripper gripper;
 
     @Override
     public void runOpMode() {
@@ -82,6 +88,9 @@ public class AutonomousRedFront extends LinearOpMode {
          * Go to the folder 'subsystems' to view the subsystems, which contain more information
          */
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
+        gripper = new Gripper(hardwareMap);
+        armOnder = new ArmOnder(hardwareMap);
+        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initialized");
@@ -97,41 +106,96 @@ public class AutonomousRedFront extends LinearOpMode {
          * Now it is time for the main autonomous code to run once during the match
          */
 
-        //Set all the motors of the exampleMecanumDrivetrain subsystem to half speed
-        exampleMecanumDrivetrain.setLeftBackSpeed(0.5);
-        exampleMecanumDrivetrain.setRightFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setRightBackSpeed(0.5);
+        armOnder.DRIVING();
+        armBoven.DRIVING();
+        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
 
-        //wait for 2600 milliseconds
-        sleep(2600);
+        gripper.OPEN();
+        sleep(1000);
+
+        //Set all the motors of the exampleMecanumDrivetrain subsystem to half speed
+        exampleMecanumDrivetrain.setLeftBackSpeed(0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(0.25);
+
+        //wait for 1500 milliseconds
+        sleep(1500);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
 
-        //wait for 2000 milliseconds
-        sleep(2000);
+        //wait for 1000 milliseconds
+        sleep(1000);
 
-        //set all the left motors of the exampleMecanumDrivetrain subsystem to go backward and the right ones to go forward
+        //set all the left motors of the exampleMecanumDrivetrain subsystem to go forward and the right ones to go backward
         exampleMecanumDrivetrain.setLeftBackSpeed(1);
         exampleMecanumDrivetrain.setRightFrontSpeed(-1);
         exampleMecanumDrivetrain.setLeftFrontSpeed(1);
         exampleMecanumDrivetrain.setRightBackSpeed(-1);
 
         //wait for 1800 milliseconds
-        //the robot turned 90 degrees to the left
-        sleep(1800);
-
-        //all the motors of the exampleMecanumDrivetrain subsystem go backwards
-        exampleMecanumDrivetrain.setLeftBackSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightFrontSpeed(-0.5);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
-
-        //wait for 8500 milliseconds
-        sleep(8500);
+        //the robot turns 90 degrees to the right
+        sleep(230);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
+
+        //wait for 1000 milliseconds
+        sleep(1000);
+
+        //all the motors of the exampleMecanumDrivetrain subsystem go backwards
+        exampleMecanumDrivetrain.setLeftBackSpeed(0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(0.25);
+
+        //wait for 1300 milliseconds
+        sleep(1610);
+
+        //stop all motors
+        exampleMecanumDrivetrain.stop();
+
+        sleep(4000);
+
+        //arm goes to driving position
+        armOnder.PICKUP();
+        armBoven.PICKUP();
+        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+
+        //wait for 1000 milliseconds
+        sleep(1000);
+
+        exampleMecanumDrivetrain.setLeftBackSpeed(-0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(-0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(-0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(-0.25);
+
+        //wait for 1300 milliseconds
+        sleep(500);
+
+        exampleMecanumDrivetrain.stop();
+
+//        //move arm to position for scoring
+//        armOnder.PLACEMENT();
+//        armBoven.PLACEBACK();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+//
+//        sleep(5000);
+
+        telemetry.addData("Test","test");
+        telemetry.update();
+        //drop the pixel
+        gripper.CLOSED();
+
+//        sleep(4000);
+//
+//        //arm goes to driving position
+//        armOnder.PICKUP();
+//        armBoven.PICKUP();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+
+        sleep(10000);
+
     }
 }

@@ -106,20 +106,27 @@ public class AutonomousBlueFront extends LinearOpMode {
          * Now it is time for the main autonomous code to run once during the match
          */
 
+        armOnder.DRIVING();
+        armBoven.DRIVING();
+        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+
+        gripper.OPEN();
+        sleep(1000);
+
         //Set all the motors of the exampleMecanumDrivetrain subsystem to half speed
         exampleMecanumDrivetrain.setLeftBackSpeed(0.25);
         exampleMecanumDrivetrain.setRightFrontSpeed(0.25);
         exampleMecanumDrivetrain.setLeftFrontSpeed(0.25);
         exampleMecanumDrivetrain.setRightBackSpeed(0.25);
 
-        //wait for 2600 milliseconds
+        //wait for 1500 milliseconds
         sleep(1500);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
 
-        //wait for 2000 milliseconds
-        sleep(2000);
+        //wait for 1000 milliseconds
+        sleep(1000);
 
         //set all the left motors of the exampleMecanumDrivetrain subsystem to go forward and the right ones to go backward
         exampleMecanumDrivetrain.setLeftBackSpeed(-1);
@@ -129,22 +136,7 @@ public class AutonomousBlueFront extends LinearOpMode {
 
         //wait for 1800 milliseconds
         //the robot turns 90 degrees to the right
-        sleep(100);
-
-        //stop all motors
-        exampleMecanumDrivetrain.stop();
-
-        //wait for 2000 milliseconds
-        sleep(2000);
-
-        //all the motors of the exampleMecanumDrivetrain subsystem go backwards
-        exampleMecanumDrivetrain.setLeftBackSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightFrontSpeed(-0.5);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
-
-        //wait for 8500 milliseconds
-        sleep(7000);
+        sleep(230);
 
         //stop all motors
         exampleMecanumDrivetrain.stop();
@@ -152,29 +144,56 @@ public class AutonomousBlueFront extends LinearOpMode {
         //wait for 1000 milliseconds
         sleep(1000);
 
-        //move arm to position for scoring
-        armOnder.PLACEMENT();
-        armBoven.PLACEBACK();
-        telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+        //all the motors of the exampleMecanumDrivetrain subsystem go backwards
+        exampleMecanumDrivetrain.setLeftBackSpeed(0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(0.25);
 
-        //drop the pixel
-        gripper.OPEN();
+        //wait for 1300 milliseconds
+        sleep(1610);
+
+        //stop all motors
+        exampleMecanumDrivetrain.stop();
 
         //arm goes to driving position
-        armOnder.DRIVING();
-        armBoven.DRIVING();
+        armOnder.PICKUP();
+        armBoven.PICKUP();
         telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
 
-        //move to a side?
-        exampleMecanumDrivetrain.setLeftBackSpeed(-0.5);
-        exampleMecanumDrivetrain.setRightFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setLeftFrontSpeed(0.5);
-        exampleMecanumDrivetrain.setRightBackSpeed(-0.5);
+        //wait for 1000 milliseconds
+        sleep(3000);
 
-        //wait for 2000 milliseconds
-        sleep(2000);
+        exampleMecanumDrivetrain.setLeftBackSpeed(-0.25);
+        exampleMecanumDrivetrain.setRightFrontSpeed(-0.25);
+        exampleMecanumDrivetrain.setLeftFrontSpeed(-0.25);
+        exampleMecanumDrivetrain.setRightBackSpeed(-0.25);
+
+        //wait for 1300 milliseconds
+        sleep(500);
 
         exampleMecanumDrivetrain.stop();
+
+//        //move arm to position for scoring
+//        armOnder.PLACEMENT();
+//        armBoven.PLACEBACK();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+//
+//        sleep(5000);
+
+        telemetry.addData("Test","test");
+        telemetry.update();
+        //drop the pixel
+        gripper.CLOSED();
+
+//        sleep(4000);
+//
+//        //arm goes to driving position
+//        armOnder.PICKUP();
+//        armBoven.PICKUP();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+
+        sleep(1000);
 
     }
 }

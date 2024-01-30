@@ -10,7 +10,6 @@ public class PlaneShooter {
         shooter = hardwareMap.get(Servo.class, "shooter");
     }
 
-    public void Shoot() {
-        shooter.setPosition(0.5);
+    public void Shoot() {shooter.setPosition(-1);
     }
 }

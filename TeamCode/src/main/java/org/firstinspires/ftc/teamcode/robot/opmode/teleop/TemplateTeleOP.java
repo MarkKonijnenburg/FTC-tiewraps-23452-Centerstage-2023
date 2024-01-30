@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.robot.opmode.teleop;
 
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -91,15 +92,15 @@ public class TemplateTeleOP extends OpMode
             armOnder.DRIVING();
             armBoven.DRIVING();
             telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
-        } else if(gamepad2.x){
+        } if(gamepad2.x){
             armOnder.PLACEMENT();
             armBoven.PLACEBACK();
             telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
-        }  else if(gamepad2.b){
+        }  if(gamepad2.b){
             armOnder.PICKUP();
             armBoven.PICKUP();
             telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
-        }  else if (gamepad2.a){
+        }  if (gamepad2.a){
            armOnder.PICKUP();
            armBoven.PLACEFRONT();
         }
@@ -123,6 +124,15 @@ public class TemplateTeleOP extends OpMode
 
         if (gamepad2.dpad_up) {
             planeShooter.Shoot();
+        }
+
+        if (gamepad1.right_bumper) {
+            armOnder.up();
+        } else if (gamepad1.left_bumper) {
+            armOnder.down();
+        }
+        else {
+            armOnder.DISABLED();
         }
 
 
