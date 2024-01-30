@@ -100,10 +100,10 @@ public class ExampleMecanumDrivetrain {
 
     public void mecanumDrive(double x, double y, double rx){
 
-        leftFront.setPower(y + x + rx);
-        leftBack.setPower(y - x + rx);
-        rightFront.setPower(y - x - rx);
-        rightBack.setPower(y + x - rx);
+        leftFront.setPower((y + x + rx) * 0.9);
+        leftBack.setPower((y - x + rx) * 0.9);
+        rightFront.setPower((y - x - rx) * 0.9);
+        rightBack.setPower((y + x - rx) * 0.9);
     }
 
     /**
