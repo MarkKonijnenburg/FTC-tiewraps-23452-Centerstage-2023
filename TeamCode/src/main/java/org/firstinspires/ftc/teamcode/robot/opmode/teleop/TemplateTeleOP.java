@@ -14,6 +14,7 @@ import org.firstinspires.ftc.teamcode.robot.subsystem.Climber;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
 //import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
 import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
+import org.firstinspires.ftc.teamcode.robot.subsystem.Pixelschuiver;
 import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
 
 
@@ -36,12 +37,12 @@ public class TemplateTeleOP extends OpMode
      */
 //    private ExampleSubsystem exampleSubsystem;
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
-    private ArmBoven armBoven;
-    private ArmOnder armOnder;
-    private Gripper gripper;
+//    private ArmBoven armBoven;
+ //   private ArmOnder armOnder;
+  //  private Gripper gripper;
     private Climber climberMotor;
     private PlaneShooter planeShooter;
-
+    private Pixelschuiver pixelschuiver;
     @Override
     public void init() {
         // Telemetry.addData is used to display variables and text on the Driver Station
@@ -53,12 +54,12 @@ public class TemplateTeleOP extends OpMode
          */
 //        exampleSubsystem = new ExampleSubsystem(hardwareMap);
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
-        gripper = new Gripper(hardwareMap);
-        armOnder = new ArmOnder(hardwareMap);
-        armBoven = new ArmBoven(hardwareMap);
+    //    gripper = new Gripper(hardwareMap);
+//        armOnder = new ArmOnder(hardwareMap);
+//        armBoven = new ArmBoven(hardwareMap);
         climberMotor = new Climber(hardwareMap);
         planeShooter = new PlaneShooter(hardwareMap);
-
+        pixelschuiver = new Pixelschuiver(hardwareMap);
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
     }
@@ -85,55 +86,58 @@ public class TemplateTeleOP extends OpMode
      */
     @Override
     public void loop() {
-        /*
-         * Execute the functions of the example subsystem based on controller input
-         */
-        if (gamepad2.y){
-            armOnder.DRIVING();
-            armBoven.DRIVING();
-            telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
-        } if(gamepad2.x){
-            armOnder.PLACEMENT();
-            armBoven.PLACEBACK();
-            telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
-        }  if(gamepad2.b){
-            armOnder.PICKUP();
-            armBoven.PICKUP();
-            telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
-        }  if (gamepad2.a){
-           armOnder.PICKUP();
-           armBoven.PLACEFRONT();
-        }
+//        /*
+//         * Execute the functions of the example subsystem based on controller input
+//         */
+//        if (gamepad2.y){
+//            armOnder.DRIVING();
+//            armBoven.DRIVING();
+//            telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+//        } if(gamepad2.x){
+//            armOnder.PLACEMENT();
+//            armBoven.PLACEBACK();
+//            telemetry.addData("degreeSetpoint", armOnder.getDegreePlacement());
+//        }  if(gamepad2.b){
+//            armOnder.PICKUP();
+//            armBoven.PICKUP();
+//            telemetry.addData("degreeSetpoint", armOnder.getDegreePickup());
+//        }  if (gamepad2.a){
+//           armOnder.PICKUP();
+//           armBoven.PLACEFRONT();
+//        }
 
 
-        if (gamepad2.right_bumper){
-            gripper.CLOSED();
-        }  else if(gamepad2.left_bumper) {
-            gripper.OPEN();
-        }
+//        if (gamepad2.right_bumper){
+//            gripper.CLOSED();
+//        }  else if(gamepad2.left_bumper) {
+//            gripper.OPEN();
+//        }
 
         if (gamepad2.right_trigger > 0.1){
             climberMotor.climbing();
         } else if (gamepad2.left_trigger > 0.1) {
             climberMotor.down();
-        }
-
-        else {
+        } else {
             climberMotor.disabled();
         }
 
-        if (gamepad2.dpad_up) {
+        if (gamepad2.y) {
             planeShooter.Shoot();
         }
 
-        if (gamepad1.right_bumper) {
-            armOnder.up();
-        } else if (gamepad1.left_bumper) {
-            armOnder.down();
+        if (gamepad2.dpad_up) {
+            pixelschuiver.flipUp();
+        } else if (gamepad2.dpad_down) {
+          pixelschuiver.flipDown();
         }
-        else {
-            armOnder.DISABLED();
-        }
+//        if (gamepad1.right_bumper) {
+//            armOnder.up();
+//        } else if (gamepad1.left_bumper) {
+//            armOnder.down();
+//        }
+//        else {
+//            armOnder.DISABLED();
+//        }
 
 
 
