@@ -70,9 +70,9 @@ public class AutonomousRedFront extends LinearOpMode {
      * but not yet create them, this will happen in the init() function.
      */
     private ExampleMecanumDrivetrain exampleMecanumDrivetrain;
-    private ArmBoven armBoven;
-    private ArmOnder armOnder;
-    private Gripper gripper;
+//    private ArmBoven armBoven;
+//    private ArmOnder armOnder;
+//    private Gripper gripper;
 
     @Override
     public void runOpMode() {
@@ -88,9 +88,9 @@ public class AutonomousRedFront extends LinearOpMode {
          * Go to the folder 'subsystems' to view the subsystems, which contain more information
          */
         exampleMecanumDrivetrain = new ExampleMecanumDrivetrain(hardwareMap);
-        gripper = new Gripper(hardwareMap);
-        armOnder = new ArmOnder(hardwareMap);
-        armBoven = new ArmBoven(hardwareMap);
+//        gripper = new Gripper(hardwareMap);
+//        armOnder = new ArmOnder(hardwareMap);
+//        armBoven = new ArmBoven(hardwareMap);
 
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initialized");
@@ -106,11 +106,11 @@ public class AutonomousRedFront extends LinearOpMode {
          * Now it is time for the main autonomous code to run once during the match
          */
 
-        armOnder.DRIVING();
-        armBoven.DRIVING();
-        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+//        armOnder.DRIVING();
+//        armBoven.DRIVING();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
 
-        gripper.OPEN();
+//        gripper.OPEN();
         sleep(1000);
 
         //Set all the motors of the exampleMecanumDrivetrain subsystem to half speed
@@ -159,9 +159,9 @@ public class AutonomousRedFront extends LinearOpMode {
         sleep(4000);
 
         //arm goes to driving position
-        armOnder.PICKUP();
-        armBoven.PICKUP();
-        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
+//        armOnder.PICKUP();
+//        armBoven.PICKUP();
+//        telemetry.addData("degreeSetpoint", armOnder.getDegreeDriving());
 
         //wait for 1000 milliseconds
         sleep(1000);
@@ -186,7 +186,7 @@ public class AutonomousRedFront extends LinearOpMode {
         telemetry.addData("Test","test");
         telemetry.update();
         //drop the pixel
-        gripper.CLOSED();
+//        gripper.CLOSED();
 
 //        sleep(4000);
 //

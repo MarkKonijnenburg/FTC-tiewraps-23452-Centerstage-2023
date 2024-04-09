@@ -6,16 +6,16 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
-import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
-import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
-import org.firstinspires.ftc.teamcode.robot.subsystem.Climber;
+//import org.firstinspires.ftc.teamcode.lib.geometry.Rotation2d;
+//import org.firstinspires.ftc.teamcode.lib.kinematics.ChassisSpeeds;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmOnder;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.ArmBoven;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.Climber;
 import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleMecanumDrivetrain;
-//import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
-import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
-import org.firstinspires.ftc.teamcode.robot.subsystem.Pixelschuiver;
-import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
+////import org.firstinspires.ftc.teamcode.robot.subsystem.ExampleSubsystem;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.Gripper;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.Pixelschuiver;
+//import org.firstinspires.ftc.teamcode.robot.subsystem.PlaneShooter;
 
 
 /*
@@ -40,9 +40,9 @@ public class TemplateTeleOP extends OpMode
 //    private ArmBoven armBoven;
  //   private ArmOnder armOnder;
   //  private Gripper gripper;
-    private Climber climberMotor;
-    private PlaneShooter planeShooter;
-    private Pixelschuiver pixelschuiver;
+//    private Climber climberMotor;
+//    private PlaneShooter planeShooter;
+//    private Pixelschuiver pixelschuiver;
     @Override
     public void init() {
         // Telemetry.addData is used to display variables and text on the Driver Station
@@ -57,9 +57,9 @@ public class TemplateTeleOP extends OpMode
     //    gripper = new Gripper(hardwareMap);
 //        armOnder = new ArmOnder(hardwareMap);
 //        armBoven = new ArmBoven(hardwareMap);
-        climberMotor = new Climber(hardwareMap);
-        planeShooter = new PlaneShooter(hardwareMap);
-        pixelschuiver = new Pixelschuiver(hardwareMap);
+//        climberMotor = new Climber(hardwareMap);
+//        planeShooter = new PlaneShooter(hardwareMap);
+//        pixelschuiver = new Pixelschuiver(hardwareMap);
         // Tell the driver that initialization is complete via the Driver Station
         telemetry.addData("Status", "Initializing done");
     }
@@ -113,23 +113,23 @@ public class TemplateTeleOP extends OpMode
 //            gripper.OPEN();
 //        }
 
-        if (gamepad2.right_trigger > 0.1){
-            climberMotor.climbing();
-        } else if (gamepad2.left_trigger > 0.1) {
-            climberMotor.down();
-        } else {
-            climberMotor.disabled();
-        }
-
-        if (gamepad2.y) {
-            planeShooter.Shoot();
-        }
-
-        if (gamepad2.dpad_up) {
-            pixelschuiver.flipUp();
-        } else if (gamepad2.dpad_down) {
-          pixelschuiver.flipDown();
-        }
+//        if (gamepad2.right_trigger > 0.1){
+//            climberMotor.climbing();
+//        } else if (gamepad2.left_trigger > 0.1) {
+//            climberMotor.down();
+//        } else {
+//            climberMotor.disabled();
+//        }
+//
+//        if (gamepad2.y) {
+//            planeShooter.Shoot();
+//        }
+//
+//        if (gamepad2.dpad_up) {
+//            pixelschuiver.flipUp();
+//        } else if (gamepad2.dpad_down) {
+//          pixelschuiver.flipDown();
+//        }
 //        if (gamepad1.right_bumper) {
 //            armOnder.up();
 //        } else if (gamepad1.left_bumper) {
